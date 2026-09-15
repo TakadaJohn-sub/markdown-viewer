@@ -33,7 +33,7 @@ test.describe('Links (§5)', () => {
   test('a link to a missing file shows a "not found" banner', async ({ app, page }) => {
     await launchGfm(app, page)
     await page.getByRole('link', { name: 'broken link' }).click()
-    await expect(page.getByRole('status')).toContainText(/見つかりません|not found/)
+    await expect(page.getByRole('status')).toContainText(/見つかりません|could not be found/)
   })
 
   // A Markdown-authored link to a scheme like "vscode:" never survives sanitize (§3.2

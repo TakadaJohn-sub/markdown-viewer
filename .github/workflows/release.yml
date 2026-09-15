@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run test:e2e
+
+      - name: Build universal macOS distributable
+        run: |
+          npx vite build
+          npx electron-builder --mac --universal
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          gh release create "${GITHUB_REF_NAME}" \
+            "release/${VERSION}/Markdown Viewer-${VERSION}-universal.dmg" \
+            "release/${VERSION}/Markdown Viewer-${VERSION}-universal-mac.zip" \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes

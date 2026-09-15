@@ -2,6 +2,11 @@
 
 A lightweight, read-only desktop app for viewing Markdown files on macOS. Built with Electron and React — no editing, no note-taking, just a fast, secure viewer.
 
+<p align="center">
+  <img src="docs/screenshots/light.png" width="49%" alt="Markdown Viewer showing a table, task list, and a Tip alert in light mode">
+  <img src="docs/screenshots/dark.png" width="49%" alt="Markdown Viewer showing syntax-highlighted code, math, and a Mermaid diagram in dark mode">
+</p>
+
 ## Features
 
 - CommonMark + GitHub Flavored Markdown (tables, task lists, strikethrough, footnotes, autolinks)
@@ -54,10 +59,6 @@ npm run dist       # signed-locally dmg + zip, for distribution
 - Unsigned build — see Installation above. Proper Apple notarization is planned for a future release.
 - macOS only for now.
 - Read-only by design — this is a viewer, not an editor.
-
-## Design documentation
-
-For the architecture and the reasoning behind it, see [`Markdown Viewer 設計方針書.md`](<./Markdown Viewer 設計方針書.md>) (Japanese).
 
 ## License
 

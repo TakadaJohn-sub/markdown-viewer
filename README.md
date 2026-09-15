@@ -17,7 +17,7 @@ A lightweight, read-only desktop app for viewing Markdown files on macOS. Built 
 
 ## Installation
 
-Download the latest `.dmg` from [Releases](https://github.com/takadajohn-sub/markdown-viewer/releases), open it, and drag **Markdown Viewer** into Applications.
+Download the latest `.dmg` from [Releases](https://github.com/TakadaJohn-sub/markdown-viewer/releases), open it, and drag **Markdown Viewer** into Applications.
 
 This build isn't code-signed yet, so on first launch macOS will say it "cannot be opened because Apple cannot check it for malicious software." To open it anyway:
 

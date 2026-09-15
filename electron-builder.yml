@@ -21,6 +21,7 @@ fileAssociations:
 mac:
   target: [dmg, zip]
   category: public.app-category.productivity
+  icon: build/icon.icns
   # Ad-hoc signature for local use; distribution needs a Developer ID and notarization.
   identity: '-'
   extendInfo:

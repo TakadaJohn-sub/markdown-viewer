@@ -1,0 +1,80 @@
+.code-block {
+  margin: 16px 0;
+  border: 1px solid var(--mdv-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--mdv-border);
+  background: var(--mdv-surface);
+  font-size: 12px;
+}
+
+.code-block__language {
+  color: var(--mdv-fg-muted);
+  font-family: var(--mdv-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.code-block__copy {
+  padding: 2px 8px;
+  border: 1px solid var(--mdv-border-strong);
+  border-radius: 5px;
+  background: var(--mdv-bg);
+  color: var(--mdv-fg);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.code-block__copy:hover {
+  background: var(--mdv-surface-hover);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 12px 14px;
+  overflow-x: auto;
+  background: var(--mdv-code-bg, var(--mdv-bg));
+  font-family: var(--mdv-font-mono);
+  font-size: 0.875em;
+  line-height: 1.6;
+}
+
+.code-block pre code {
+  font-family: inherit;
+}
+
+/*
+ * Shiki was built with defaultColor:false (§3.6): each token carries BOTH themes' colours
+ * as --shiki-light/--shiki-dark custom properties, and it's up to us to pick one via CSS —
+ * that's what makes switching Light/Dark instant, with no re-highlighting. Selectors need
+ * to be at least as specific as ".code-block pre" above so this wins over its fallback
+ * background on highlighted blocks, while an unhighlighted block (no .shiki class, §12's
+ * skip-highlight tier) keeps using that fallback untouched.
+ */
+.code-block pre.shiki,
+.code-block pre.shiki span {
+  color: var(--shiki-light);
+}
+
+.code-block pre.shiki {
+  background: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .code-block pre.shiki,
+  .code-block pre.shiki span {
+    color: var(--shiki-dark);
+  }
+
+  .code-block pre.shiki {
+    background: var(--shiki-dark-bg);
+  }
+}

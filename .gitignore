@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-electron/
+release/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.DS_Store
+
+# Internal design/spec docs — kept locally, not published.
+Markdown Viewer 製品仕様書.md
+Markdown Viewer 設計方針書.md

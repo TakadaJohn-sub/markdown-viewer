@@ -1,0 +1,18 @@
+.banner {
+  margin: 0 0 20px;
+  padding: 8px 12px;
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.banner--info {
+  border-color: var(--mdv-info-border);
+  background: var(--mdv-info-bg);
+}
+
+.banner--warning {
+  border-color: var(--mdv-warning-border);
+  background: var(--mdv-warning-bg);
+}

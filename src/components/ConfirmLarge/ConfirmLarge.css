@@ -1,0 +1,36 @@
+.confirm-large {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.confirm-large__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.confirm-large__message {
+  max-width: 34em;
+  margin: 0;
+  color: var(--mdv-fg-muted);
+}
+
+.confirm-large__size {
+  margin: 4px 0 0;
+  color: var(--mdv-fg-muted);
+  font-family: var(--mdv-font-mono);
+  font-size: 12px;
+}
+
+.confirm-large__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}

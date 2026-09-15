@@ -1,0 +1,33 @@
+.drop-overlay {
+  position: fixed;
+  inset: 8px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--mdv-accent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--mdv-accent) 10%, transparent);
+  pointer-events: none;
+}
+
+.drop-overlay__label {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--mdv-accent);
+  color: var(--mdv-on-accent);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.banner-stack {
+  max-width: var(--mdv-content-width);
+  margin: 16px auto 0;
+  padding: 0 32px;
+}
+
+@media (max-width: 600px) {
+  .banner-stack {
+    padding: 0 16px;
+  }
+}

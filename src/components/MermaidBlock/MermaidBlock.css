@@ -1,0 +1,45 @@
+.mermaid-block {
+  display: flex;
+  justify-content: center;
+  min-height: 48px;
+  margin: 16px 0;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+.mermaid-block svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.mermaid-block--error {
+  display: block;
+  border: 1px solid var(--mdv-warning-border);
+  border-radius: 8px;
+  background: var(--mdv-warning-bg);
+  padding: 12px 14px;
+}
+
+.mermaid-block__error-message {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.mermaid-block__error-detail {
+  margin: 0 0 10px;
+  color: var(--mdv-fg-muted);
+  font-family: var(--mdv-font-mono);
+  font-size: 0.85em;
+  white-space: pre-wrap;
+}
+
+.mermaid-block__source {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--mdv-surface);
+  overflow-x: auto;
+  font-family: var(--mdv-font-mono);
+  font-size: 0.875em;
+  line-height: 1.6;
+}

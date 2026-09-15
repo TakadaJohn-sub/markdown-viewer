@@ -1,0 +1,21 @@
+.document {
+  max-width: var(--mdv-content-width);
+  margin: 0 auto;
+  padding: 32px;
+}
+
+@media (max-width: 600px) {
+  .document {
+    padding: 16px;
+  }
+}
+
+.plain-text {
+  margin: 0;
+  font-family: var(--mdv-font-mono);
+  font-size: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  tab-size: 4;
+}

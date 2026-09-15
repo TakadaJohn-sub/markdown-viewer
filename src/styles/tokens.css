@@ -1,0 +1,64 @@
+/*
+ * Design tokens. Themes (and later custom CSS) swap these values; components only use the variables.
+ * Light/Dark follow prefers-color-scheme, which the main process drives via nativeTheme.themeSource.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* Keep --mdv-bg in sync with WINDOW_BACKGROUND in shared/theme.ts. */
+  --mdv-bg: #ffffff;
+  --mdv-fg: #1d1d1f;
+  --mdv-fg-muted: #6b6b72;
+  --mdv-border: #e2e2e7;
+  --mdv-border-strong: #c7c7cf;
+  --mdv-surface: #f5f5f7;
+  --mdv-surface-hover: #ebebef;
+  --mdv-accent: #0a66d8;
+  --mdv-accent-hover: #0857ba;
+  --mdv-on-accent: #ffffff;
+  --mdv-info-bg: #eef5ff;
+  --mdv-info-border: #c4dbfa;
+  --mdv-warning-bg: #fff7e0;
+  --mdv-warning-border: #f0d68a;
+  --mdv-danger: #cf222e;
+
+  /* GitHub Alert accents (§3.5); each pairs with a 12%-tint background in MarkdownRenderer.css. */
+  --mdv-alert-note: #0969da;
+  --mdv-alert-tip: #1a7f37;
+  --mdv-alert-important: #8250df;
+  --mdv-alert-warning: #9a6700;
+  --mdv-alert-caution: #cf222e;
+
+  --mdv-font-sans: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP',
+    'Segoe UI', 'Yu Gothic UI', Meiryo, sans-serif;
+  --mdv-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  --mdv-font-size: 16px;
+  --mdv-line-height: 1.75;
+  --mdv-content-width: 780px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mdv-bg: #1b1c1f;
+    --mdv-fg: #e6e6e9;
+    --mdv-fg-muted: #9d9da6;
+    --mdv-border: #34353b;
+    --mdv-border-strong: #4a4b52;
+    --mdv-surface: #25262a;
+    --mdv-surface-hover: #2f3035;
+    --mdv-accent: #5b9dff;
+    --mdv-accent-hover: #7cb1ff;
+    --mdv-on-accent: #0b1a33;
+    --mdv-info-bg: #1b2a40;
+    --mdv-info-border: #2c4a72;
+    --mdv-warning-bg: #3a2f14;
+    --mdv-warning-border: #6b5520;
+    --mdv-danger: #f85149;
+
+    --mdv-alert-note: #4493f8;
+    --mdv-alert-tip: #3fb950;
+    --mdv-alert-important: #ab7df8;
+    --mdv-alert-warning: #d29922;
+    --mdv-alert-caution: #f85149;
+  }
+}

@@ -1,0 +1,63 @@
+.custom-css-panel {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  bottom: 12px;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  overflow: hidden;
+  border: 1px solid var(--mdv-border-strong);
+  border-radius: 10px;
+  background: var(--mdv-bg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+.custom-css-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 6px 8px 12px;
+  border-bottom: 1px solid var(--mdv-border);
+}
+
+.custom-css-panel__title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.custom-css-panel__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--mdv-fg);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.custom-css-panel__close:hover {
+  background: var(--mdv-surface-hover);
+}
+
+.custom-css-panel__textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 12px;
+  background: transparent;
+  color: var(--mdv-fg);
+  font-family: var(--mdv-font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.custom-css-panel__textarea::placeholder {
+  color: var(--mdv-fg-muted);
+}

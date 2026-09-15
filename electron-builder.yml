@@ -1,0 +1,48 @@
+appId: io.github.takadajohn-sub.markdownviewer
+productName: Markdown Viewer
+directories:
+  output: release/${version}
+files:
+  - dist/**
+  - dist-electron/**
+  - package.json
+  # Everything is bundled into dist/dist-electron by Vite; nothing at runtime ever does a
+  # bare `require()` into node_modules. Without this, electron-builder still walks and
+  # includes node_modules for every package.json "dependencies" entry regardless of `files`.
+  - '!node_modules/**'
+asar: true
+
+fileAssociations:
+  - ext: [md, markdown, mdown, mkd, mkdn]
+    name: Markdown Document
+    role: Viewer
+    rank: Default
+
+mac:
+  target: [dmg, zip]
+  category: public.app-category.productivity
+  # Ad-hoc signature for local use; distribution needs a Developer ID and notarization.
+  identity: '-'
+  extendInfo:
+    CFBundleDocumentTypes:
+      - CFBundleTypeName: Markdown Document
+        CFBundleTypeRole: Viewer
+        LSHandlerRank: Default
+        LSItemContentTypes: [net.daringfireball.markdown]
+    # Declares the standard Markdown UTI for systems where no other app has.
+    UTImportedTypeDeclarations:
+      - UTTypeIdentifier: net.daringfireball.markdown
+        UTTypeDescription: Markdown Document
+        UTTypeConformsTo: [public.plain-text]
+        UTTypeTagSpecification:
+          public.filename-extension: [md, markdown, mdown, mkd, mkdn]
+          public.mime-type: [text/markdown]
+
+electronFuses:
+  runAsNode: false
+  enableCookieEncryption: true
+  enableNodeOptionsEnvironmentVariable: false
+  enableNodeCliInspectArguments: false
+  enableEmbeddedAsarIntegrityValidation: true
+  onlyLoadAppFromAsar: true
+  grantFileProtocolExtraPrivileges: false

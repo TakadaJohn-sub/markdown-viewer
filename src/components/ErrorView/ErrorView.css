@@ -1,0 +1,37 @@
+.error-view {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.error-view__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.error-view__message {
+  margin: 0;
+}
+
+.error-view__path {
+  max-width: min(100%, 40em);
+  margin: 4px 0 0;
+  color: var(--mdv-fg-muted);
+  font-family: var(--mdv-font-mono);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.error-view__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}

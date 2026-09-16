@@ -39,6 +39,10 @@ mac:
           public.filename-extension: [md, markdown, mdown, mkd, mkdn]
           public.mime-type: [text/markdown]
 
+win:
+  target: [zip]
+  icon: build/icon.ico
+
 electronFuses:
   runAsNode: false
   enableCookieEncryption: true

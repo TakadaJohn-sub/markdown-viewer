@@ -1,7 +1,7 @@
 {
   "name": "markdown-viewer",
   "productName": "Markdown Viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A lightweight desktop viewer for reading Markdown files",
   "main": "dist-electron/main.js",

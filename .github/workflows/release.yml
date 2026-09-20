@@ -26,10 +26,11 @@ jobs:
       - run: npm run test
       - run: npm run test:e2e
 
-      - name: Build universal macOS distributable
+      - name: Build macOS (universal) and Windows (x64 + arm64) distributables
         run: |
           npx vite build
           npx electron-builder --mac --universal
+          npx electron-builder --win --x64 --arm64
 
       - name: Publish GitHub Release
         env:
@@ -39,5 +40,8 @@ jobs:
           gh release create "${GITHUB_REF_NAME}" \
             "release/${VERSION}/Markdown Viewer-${VERSION}-universal.dmg" \
             "release/${VERSION}/Markdown Viewer-${VERSION}-universal-mac.zip" \
+            "release/${VERSION}/Markdown Viewer-${VERSION}-win.zip" \
+            "release/${VERSION}/Markdown Viewer-${VERSION}-arm64-win.zip" \
             --title "${GITHUB_REF_NAME}" \
+            --notes "**Install:** macOS builds are not code-signed yet — right-click the app and choose Open the first time. Windows builds (\`*-win.zip\`) are early support: extract and run \`Markdown Viewer.exe\`. See the README for details." \
             --generate-notes

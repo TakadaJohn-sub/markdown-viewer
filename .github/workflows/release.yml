@@ -26,11 +26,13 @@ jobs:
       - run: npm run test
       - run: npm run test:e2e
 
+      # --publish never: electron-builder otherwise auto-publishes on tag builds and demands
+      # GH_TOKEN; the release is created explicitly by the step below instead.
       - name: Build macOS (universal) and Windows (x64 + arm64) distributables
         run: |
           npx vite build
-          npx electron-builder --mac --universal
-          npx electron-builder --win --x64 --arm64
+          npx electron-builder --mac --universal --publish never
+          npx electron-builder --win --x64 --arm64 --publish never
 
       - name: Publish GitHub Release
         env:

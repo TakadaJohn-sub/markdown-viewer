@@ -45,6 +45,10 @@ export class FileWatcher {
       }
       watcher.on('error', () => this.stop())
       this.watcher = watcher
+      // A change made between reading `lastHash` above and the watcher going live is never
+      // delivered as an fs event (macOS drops events from before the stream is armed), so
+      // check once now rather than leaving it undetected until the next event or refocus.
+      this.scheduleCheck()
     } catch {
       // Some mounts (certain network drives) don't support directory watching; window-focus
       // `recheck()` is the fallback safety net (§6.4), so degrade silently rather than throw.

@@ -1,7 +1,8 @@
+import { EventEmitter } from 'node:events'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { FileWatcher } from '../../electron/file-watcher'
 import type { FileWatchEvent } from '../../shared/ipc'
 
@@ -31,11 +32,31 @@ function collector(): { events: FileWatchEvent[]; onEvent: (event: FileWatchEven
 }
 
 afterEach(() => {
+  vi.restoreAllMocks()
   for (const dir of dirs.splice(0)) fs.rmSync(dir, { recursive: true, force: true })
 })
 
 describe('FileWatcher', () => {
   it('reports a changed file', async () => {
+    const filePath = tempFile('first')
+    const { events, onEvent } = collector()
+    const watcher = new FileWatcher(onEvent)
+    try {
+      await watcher.watch(filePath)
+      fs.writeFileSync(filePath, 'second')
+      await waitFor(() => events.length > 0)
+      expect(events).toEqual(['changed'])
+    } finally {
+      watcher.stop()
+    }
+  })
+
+  it('catches a change made before the watcher went live, even if no fs event ever arrives', async () => {
+    // macOS drops fs events from before the stream is armed; simulate that worst case with a
+    // watcher that never fires, so only the post-arm re-check can notice the change.
+    vi.spyOn(fs, 'watch').mockImplementation(
+      () => Object.assign(new EventEmitter(), { close() {} }) as unknown as fs.FSWatcher,
+    )
     const filePath = tempFile('first')
     const { events, onEvent } = collector()
     const watcher = new FileWatcher(onEvent)
